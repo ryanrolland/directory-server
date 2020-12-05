@@ -81,6 +81,11 @@
     
     <dependency>
       <groupId>${project.groupId}</groupId>
+      <artifactId>apacheds-interceptors-members</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>${project.groupId}</groupId>
       <artifactId>apacheds-protocol-ldap</artifactId>
     </dependency>
     
@@ -173,6 +178,8 @@
       <groupId>org.apache.directory.api</groupId>
       <artifactId>api-dsml-engine</artifactId>
     </dependency>
+
+    
   </dependencies>
 
   <build>
