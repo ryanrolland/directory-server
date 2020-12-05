@@ -133,7 +133,8 @@ public class MemberOfInterceptor extends BaseInterceptor
     {
         CoreSession adminSession = directoryService.getAdminSession();
         AttributeType member = directoryService.getAtProvider().getUniqueMember();
-        if( memberAttributeSearch ) {
+        if ( memberAttributeSearch ) 
+        {
             member = directoryService.getAtProvider().getMember();
         }
         
@@ -213,7 +214,7 @@ public class MemberOfInterceptor extends BaseInterceptor
     
     private class VirtualSyntax extends LdapSyntax
     {
-        public VirtualSyntax()
+        VirtualSyntax()
         {
             super( MEMBER_OF_OID );
             addName( "memberOf" );
