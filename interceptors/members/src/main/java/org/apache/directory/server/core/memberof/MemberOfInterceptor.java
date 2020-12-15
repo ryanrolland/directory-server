@@ -21,6 +21,7 @@ package org.apache.directory.server.core.memberof;
 
 
 import org.apache.directory.api.ldap.model.constants.Loggers;
+import org.apache.directory.api.ldap.model.constants.SchemaConstants;
 import org.apache.directory.api.ldap.model.entry.Entry;
 import org.apache.directory.api.ldap.model.entry.Value;
 import org.apache.directory.api.ldap.model.exception.LdapException;
@@ -69,10 +70,7 @@ public class MemberOfInterceptor extends BaseInterceptor
 
     private boolean memberAttributeSearch = false;
 
-    
-    //Should this be added to SchemaConstants?
     public static final String MEMBER_OF = "memberOf";
-    public static final String MEMBER_OF_OID = "2.5.4.31.1";
     
     /**
      * 
@@ -151,7 +149,8 @@ public class MemberOfInterceptor extends BaseInterceptor
         searchOperationContext.setPartition( partition );
 
         //Is this appropriate how to instantiate 'virtual' attribute types?:
-        AttributeType atMemberOf = new AttributeType( MEMBER_OF_OID );
+        
+        AttributeType atMemberOf = new AttributeType( SchemaConstants.DN_SYNTAX );
         atMemberOf.setNames( MEMBER_OF );
         atMemberOf.setSyntax( new VirtualSyntax() );
         
@@ -216,8 +215,8 @@ public class MemberOfInterceptor extends BaseInterceptor
     {
         VirtualSyntax()
         {
-            super( MEMBER_OF_OID );
-            addName( "memberOf" );
+            super( SchemaConstants.DN_SYNTAX );
+            addName( MEMBER_OF );
             isObsolete = false;
             isHumanReadable = true;
             syntaxChecker = DirectoryStringSyntaxChecker.builder().build();
